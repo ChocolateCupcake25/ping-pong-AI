@@ -21,11 +21,27 @@ var ball = {
 
 function setup(){
  canvas =  createCanvas(700,600);
+ canvas.parent('canvas');
+ instializeInSetup(pingpong);
+
+	video=createCapture(VIDEO);
+	video.size(650,550);
+  video.hide();
+
+  poseNet=ml5.poseNet(video,ModelLoaded);
+  poseNet.on(pose,gotPoses);
+
 }
+
+function ModelLoaded(){
+  console.log('Model Loaded!');
+}
+
+function gotPoses(){}
 
 
 function draw(){
-
+image(video,0,0,650,550);
  background(0); 
 
  fill("black");
