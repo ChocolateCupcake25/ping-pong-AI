@@ -15,6 +15,7 @@ rightWrist_x=0;
 rightWrist_y=0;
 rightWrist_score=0;
 
+
 var ball = {
     x:350/2,
     y:480/2,
@@ -37,6 +38,8 @@ function setup(){
 
 }
 
+game_status="";
+
 function ModelLoaded(){
   console.log('Model Loaded!');
 }
@@ -54,6 +57,10 @@ function gotPoses(results){
 	}
 }
 
+function start_game(){
+  game_status='start';
+  document.getElementById('status').innerHTML= ' Game is Loaded';
+}
 
 function draw(){
 image(video,0,0,650,550);
@@ -63,6 +70,8 @@ if(rightWrist > 0.2){
   stroke('#ff0048');
   cicle(rightWrist_x,rightWrist_y,20);
 }
+
+if(game_status == 'start'){}
 
  fill("black");
  stroke("black");
