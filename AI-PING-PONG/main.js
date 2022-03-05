@@ -11,6 +11,10 @@ var  playerscore =0;
 var audio1;
 var pcscore =0;
 
+rightWrist_x=0;
+rightWrist_y=0;
+rightWrist_score=0;
+
 var ball = {
     x:350/2,
     y:480/2,
@@ -37,12 +41,28 @@ function ModelLoaded(){
   console.log('Model Loaded!');
 }
 
-function gotPoses(){}
+function gotPoses(results){
+  if(results.length > 0)
+	{
+	console.log(results);	
+	  rightWrist_x = results[0].pose.rightWrist.x;
+	  rightWrist_y = results[0].pose.rightWrist.y;
+    rightWrist_score=rightWrist.results[0].length;
+   console.log('rightWrist_x = ' + rightWrist_x + '    rightWrist_y =  ' + rightWrist_x );
+
+
+	}
+}
 
 
 function draw(){
 image(video,0,0,650,550);
  background(0); 
+if(rightWrist > 0.2){
+  fill('#ff0048');
+  stroke('#ff0048');
+  cicle(rightWrist_x,rightWrist_y,20);
+}
 
  fill("black");
  stroke("black");
